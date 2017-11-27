@@ -5,4 +5,4 @@
 * 3.[列表去重的几个方法](https://github.com/afetmin/doWithPython/blob/master/list_quchong.py)
 * 4.[爬取妹子图](https://github.com/afetmin/doWithPython/blob/master/mzitu_sprider.py)
 * 5.[爬取豆瓣top250,写入excel](https://github.com/afetmin/doWithPython/blob/master/douban_sprider.py)
-    * 
+    如图： ![](https://github.com/afetmin/doWithPython/blob/master/img/excel%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)

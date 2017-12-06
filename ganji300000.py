@@ -51,28 +51,33 @@ def get_channel_list():
 def get_every_list(url):
     page = 1
     while 1:
-        time.sleep(.5)
+        time.sleep(.3)
         url = url + 'o{}'.format(page)
-        try:
-            wb_data = get_response(url)
-            soup = BeautifulSoup(wb_data.content, 'html.parser')
-        except:
+        wb_data = get_response(url)
+        if wb_data.status_code == 404:
+            print('未找到该页面')
             pass
-        if len(soup.select('tr.zzinfo')) < 10:
-            print('没有东西了')
-            break
-        titles = list(map(lambda x: x.text, soup.select('tr.zzinfo td.t a')))
-        url_list = list(map(lambda x: x.get('href').split('?')[0], soup.select('tr.zzinfo td.t a')))
-        prices = list(map(lambda x: x.text, soup.select('tr.zzinfo td.t span.price')))
-        areas = list(map(lambda x: x.text.strip(), soup.select('tr.zzinfo td.t span.fl')))
-        for t, u, p, a in zip(titles, url_list, prices, areas):
-            data = {
-                'title': t,
-                'url': u,
-                'price': p,
-                'area': a
-            }
-            ganjidata.insert_one(data)
+        else:
+            try:
+                soup = BeautifulSoup(wb_data.content, 'html.parser')
+                if len(soup.select('tr.zzinfo')) < 20:
+                    print('没有东西了')
+                    break
+                titles = list(map(lambda x: x.text, soup.select('tr.zzinfo td.t a')))
+                url_list = list(map(lambda x: x.get('href').split('?')[0], soup.select('tr.zzinfo td.t a')))
+                prices = list(map(lambda x: x.text, soup.select('tr.zzinfo td.t span.price')))
+                areas = list(map(lambda x: x.text.strip(), soup.select('tr.zzinfo td.t span.fl')))
+                for t, u, p, a in zip(titles, url_list, prices, areas):
+                    data = {
+                        'title': t,
+                        'url': u,
+                        'price': p,
+                        'area': a
+                    }
+                    ganjidata.insert_one(data)
+            except:
+                print('解析程序出错')
+                pass
         page += 1
         print('下一页第%s页' % (page))
 
@@ -80,7 +85,5 @@ def get_every_list(url):
 if __name__ == '__main__':
     pool = Pool(4)
     url_list = get_channel_list()
-
     pool.map(get_every_list, url_list)
-
     print('done!')

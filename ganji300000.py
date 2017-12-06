@@ -6,6 +6,7 @@ import random
 import time
 import pymongo
 
+#新建数据库
 client = pymongo.MongoClient('localhost', 27017)
 ganji = client['ganji']
 ganjidata = ganji['ganjidata']

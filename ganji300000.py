@@ -31,7 +31,7 @@ def get_response(url):
         pass
     return wb_data
 
-
+#获得分类类目
 def get_channel_list():
     base_url = 'http://xinxiang.ganji.com'
     url = 'http://xinxiang.ganji.com/wu/'
@@ -47,7 +47,7 @@ def get_channel_list():
         data[category] = url
     return url_lists
 
-
+#爬取每个类目下所有物品在售连接，价格
 def get_every_list(url):
     page = 1
     while 1:

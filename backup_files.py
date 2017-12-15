@@ -29,7 +29,7 @@ def backup_files():
     zip_func="zip -qr %s %s" % (target, ''.join(source_list))
 
     if os.system(zip_func) == 0:
-        print ('成功备份到>>', target)
+        print ('成功备份到==>', target)
     else :
         print ('备份失败！')
    

@@ -31,6 +31,7 @@ def parse_html(url, name):
 
         title = soup.find('h4').get_text()
         body = soup.find_all(class_="x-wiki-content")[0]
+        # 插入标签，让title居中
         center_tag = soup.new_tag('center')
         title_tag = soup.new_tag('h1')
         title_tag.string = title
@@ -39,6 +40,7 @@ def parse_html(url, name):
         html = str(body)
         pattern = "(<img .*?src=\")(.*?)(\")"
 
+        # 把图片的相对路径改成绝对路径
         def re_func(s):
             if not s.group(2).startswith('http'):
                 rtn = s.group(1) + 'https://www.liaoxuefeng.com' + s.group(2) + s.group(3)
@@ -56,6 +58,7 @@ def parse_html(url, name):
         logging.error("解析错误", exc_info=True)
 
 
+# 得到所有目录链接
 def get_urllist(start_url):
     header = {
         'Referer': 'https://www.liaoxuefeng.com/',
@@ -107,8 +110,10 @@ def main():
         # pdfs.append(fname+str(i)+'.pdf')
         # save_pdf(str(i)+'.html',fname+str(i)+'.pdf')
     save_pdf(htmls, fname)
+    # 删除创建的html文件
     for html in htmls:
         os.remove(html)
 
 
-main()
+if __name__ == '__main__':
+    main()

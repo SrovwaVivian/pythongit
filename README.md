@@ -5,7 +5,7 @@
 * 3.[列表去重的几个方法](https://github.com/afetmin/doWithPython/blob/master/list_quchong.py)
 * 4.[爬取妹子图](https://github.com/afetmin/doWithPython/blob/master/mzitu_sprider.py)
 * 5.[火车票查询功能](https://github.com/afetmin/doWithPython/tree/master/%E7%81%AB%E8%BD%A6%E7%A5%A8%E6%9F%A5%E8%AF%A2)
-    如图：![](https://github.com/afetmin/doWithPython/blob/master/img/%E7%81%AB%E8%BD%A6%E7%A5%A8.png)
+    如图：![](https://github.com/afetmin/doWithPython/blob/master/img/huoche.png)
 * 6.[釜山行人物关系](https://github.com/afetmin/doWithPython/tree/master/%E9%87%9C%E5%B1%B1%E8%A1%8C%E4%BA%BA%E7%89%A9%E5%85%B3%E7%B3%BB)
 * 7.[多线程爬取页面所有url(需要根据页面修改部分代码)](https://github.com/afetmin/doWithPython/blob/master/crawler.py)
 * 8.[分布式爬虫，没有使用框架(手写的，效率低)](https://github.com/afetmin/doWithPython/tree/master/%E5%88%86%E5%B8%83%E5%BC%8F%E7%88%AC%E8%99%AB)

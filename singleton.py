@@ -8,7 +8,7 @@ def singleton(cls, *args, **kw):
 
 @singleton
 class MyClass:
-...
+    pass
 
 
 class Singleton(object):
@@ -17,8 +17,8 @@ class Singleton(object):
             cls._instance = super(Singleton,cls).__new__(cls, *args, **kw)
         return cls._instance
 
-class MyClass(Singleton):
+class MyClass2(Singleton):
     def __init__(self,s):
             self.s = s
-a = MyClass('apple')
-b = MyClass('banana')
+a = MyClass2('apple')
+b = MyClass2('banana')

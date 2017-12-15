@@ -13,7 +13,7 @@ def count_files(path):
     print ('共有%s个文件'%len(dir_list))
 
 if __name__ == '__main__':
-    path = input('输入路径：')
+    path = input('请输入路径：')
     if path == '':
         path = os.getcwd()
     count_files(path)

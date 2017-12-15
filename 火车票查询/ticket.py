@@ -21,9 +21,10 @@ from docopt import docopt
 import re
 import requests
 from colorama import Fore
-
+#station_name这个文件是网站上的json数据，我下载下来了
 with open('station_name.txt', 'r', encoding='utf-8') as f:
     content = f.read()
+# 找到所有站名对应的代号
 result = re.findall(r'([\u4e00-\u9fa5]+)\|([A-Z]+)', content)
 stations = dict(result)
 
@@ -52,7 +53,7 @@ class TraninsCollection(object):
 
     def _color_print(self, item, color):
         return color + item + Fore.RESET
-
+    # 把时间改成时分格式
     def parser_time(self, time):
         time_list = time.split(':')
         result = list(map(str, map(int, time_list)))
@@ -61,15 +62,15 @@ class TraninsCollection(object):
     @property
     def trains(self):
         for item in self.available_tranins['result']:
-            item = item.split("|")
-            item = list(map(lambda x: x.replace('', '--') if x == '' else x, item))
+            item = item.split("|")# 通过｜劈开
+            item = list(map(lambda x: x.replace('', '--') if x == '' else x, item))# 把空的地方填上占位符
             train_no = item[3]
             if not self.options or item[3].lower()[0] in self.options:
-                start_station = self.available_tranins['map'].get(item[6])
-                end_station = self.available_tranins['map'].get(item[7])
+                start_station = self.available_tranins['map'].get(item[6])# 始发站
+                end_station = self.available_tranins['map'].get(item[7])# 终点站
                 departure = item[8]
                 arrival = item[9]
-                duration = self.parser_time(item[10])
+                duration = self.parser_time(item[10])#　解析时间
                 yideng = item[-4]
                 erdeng = item[-5]
                 ruanwo = item[23]
@@ -77,7 +78,7 @@ class TraninsCollection(object):
                 yingzuo = item[-6]
                 wuzuo = item[26]
                 row = [train_no,
-                       '\n'.join(['始　'+self._color_print(start_station, Fore.YELLOW),
+                       '\n'.join(['始　'+self._color_print(start_station, Fore.YELLOW),#上色
                                   '终　'+self._color_print(end_station, Fore.GREEN)]),
                        '\n'.join([self._color_print(departure, Fore.YELLOW),
                                   self._color_print(arrival, Fore.GREEN)]),

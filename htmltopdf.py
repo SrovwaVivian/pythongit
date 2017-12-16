@@ -105,7 +105,7 @@ def main():
         time.sleep(2)
         print('转换第%s个' % str(i))
     htmls, pdfs = [], []
-    for i in range(0, 128):
+    for i in range(0, 128):#共128个目录
         htmls.append(str(i) + '.html')
         # pdfs.append(fname+str(i)+'.pdf')
         # save_pdf(str(i)+'.html',fname+str(i)+'.pdf')

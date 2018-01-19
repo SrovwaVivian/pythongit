@@ -41,10 +41,10 @@ class ProgressBar(object):
 
 def main():
 
-    with closing(requests.get('https://search.yahoo.com/sugg/gossip/gossip-us-sayt?output=yjsonp&l=1&nresults=30&rnd=5859781267999149&command=asphalt%20distributor&callback=yasearch', stream=True)) as response:
+    with closing(requests.get('url地址', stream=True)) as response:
         chunk_size = 1024 # 单次请求最大值
         content_size = int(response.headers['content-length']) # 内容体总大小
-        file_name = 'Py4Inf-12-HTTP.ppt'
+        file_name = 'filename.txt'
         progress = ProgressBar(file_name, total=content_size,
                                          unit="KB", chunk_size=chunk_size, run_status="正在下载", fin_status="下载完成")
        

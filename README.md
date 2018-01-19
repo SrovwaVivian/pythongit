@@ -13,3 +13,4 @@
 * 10.[爬取豆瓣top250,写入excel](https://github.com/afetmin/doWithPython/blob/master/douban_sprider.py)
 * 11.[多进程爬取赶集30万数据，存入mongodb](https://github.com/afetmin/doWithPython/blob/master/ganji300000.py)
 * 12.[K近邻手写数字识别](https://github.com/afetmin/doWithPython/tree/master/K%E8%BF%91%E9%82%BB%E6%89%8B%E5%86%99%E6%95%B0%E5%AD%97%E8%AF%86%E5%88%AB)
+* 13 [用python下载文件，可显示下载进度](https://github.com/afetmin/doWithPython/blob/master/downloadFileWithPython.py)
